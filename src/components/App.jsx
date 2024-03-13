@@ -1,32 +1,37 @@
 // 55
 
-// src/components/App.jsx
+// import { UserMenu } from './UserMenu';
 
-import { UserMenu } from './UserMenu';
-
-const App = () => {
-  return (
-    <div>
-      <UserMenu />
-    </div>
-  );
-};
+// const App = () => {
+//   return (
+//     <div>
+//       <UserMenu />
+//     </div>
+//   );
+// };
 
 // 54 useRef Перенаправлення рефів
 
-// import { forwardRef, useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef } from 'react';
 
-// const CustomButton = forwardRef((props, ref) => (
-//   <button ref={ref}>{props.children}</button>
-// ));
+const CustomButton = forwardRef((props, ref) => (
+  <button ref={ref}>{props.children}</button>
+));
 
-// const App = () => {
-//   const btnRef = useRef();
+CustomButton.displayName = 'CustomButton';
 
-//   useEffect(() => btnRef.current.focus(), []);
+function App() {
+  const btnRef = useRef();
 
-//   return <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>;
-// };
+  useEffect(() => btnRef.current.focus(), []);
+
+  return (
+    <>
+      <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>
+      <button>One more</button>
+    </>
+  );
+}
 
 // 53 useRef Відеоплеєр
 
